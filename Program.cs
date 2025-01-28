@@ -1,10 +1,13 @@
 using InventoryManagementSystem.Extensions;
+using InventoryManagementSystem.Services.Abstractions;
+using InventoryManagementSystem.Services.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDatabaseContext(builder.Configuration);
+builder.Services.AddScoped<IInventoryRepository, InventoryRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
